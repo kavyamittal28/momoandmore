@@ -77,7 +77,7 @@
     gap: 12px;
   }
   .brand {
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 12px;
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-weight: 600;
@@ -85,11 +85,20 @@
     line-height: 1;
     color: var(--espresso);
   }
-  .brand .dot {
-    display: inline-block;
-    width: 10px; height: 10px; border-radius: 999px;
-    background: var(--rust);
-    box-shadow: 0 0 0 3px var(--cream), 0 0 0 4px var(--rust);
+  .brand-mark {
+    width: 44px; height: 44px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(60,30,15,0.15));
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+  .brand:hover .brand-mark { transform: rotate(-6deg) scale(1.05); }
+  .brand-text { display: inline-flex; align-items: baseline; gap: 4px; }
+  .deva {
+    font-family: 'Fraunces', serif;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--rust);
+    font-size: 0.95em;
   }
   .nav-links {
     display: none; gap: 26px;
@@ -255,12 +264,14 @@
   .mosaic-tile.big  { grid-column: span 6; grid-row: span 3; }
   .mosaic-tile.wide { grid-column: span 6; grid-row: span 2; }
   .mosaic-tile.sq   { grid-column: span 3; grid-row: span 2; }
+  .mosaic-tile.sq2  { grid-column: span 3; grid-row: span 2; }
   .mosaic-tile.tall { grid-column: span 3; grid-row: span 3; }
   @media (min-width: 780px) {
     .mosaic { grid-auto-rows: 120px; }
     .mosaic-tile.big  { grid-column: span 3; grid-row: span 3; }
-    .mosaic-tile.wide { grid-column: span 3; grid-row: span 2; }
+    .mosaic-tile.wide { grid-column: span 4; grid-row: span 1; }
     .mosaic-tile.sq   { grid-column: span 2; grid-row: span 2; }
+    .mosaic-tile.sq2  { grid-column: span 2; grid-row: span 2; }
     .mosaic-tile.tall { grid-column: span 1; grid-row: span 3; }
   }
   .mosaic-caption {
@@ -689,8 +700,8 @@
 <header class="nav">
   <div class="container nav-inner">
     <a href="#" class="brand">
-      <span class="dot"></span>
-      Cafe Momo <em>&amp; More</em>
+      <img src="images/logo.png" alt="" class="brand-mark" />
+      <span class="brand-text">Cafe <span class="deva">मोमो</span> <em>&amp; More</em></span>
     </a>
     <nav class="nav-links">
       <a href="#about">Story</a>
@@ -708,17 +719,17 @@
 <!-- ─── HERO ─────────────────────────────────── -->
 <section class="hero">
   <div class="container">
-    <div class="hero-eyebrow reveal d1">HUDA Market · Sector 23 · Gurugram</div>
+    <div class="hero-eyebrow reveal d1">HUDA Market · Sector 23 · Gurugram · <span style="color:var(--mustard)">1 year strong ✿</span></div>
 
     <h1 class="hero-title reveal d2">
       Every <em>bite</em><br>
       tells a story <span class="amp">&amp;</span><br>
-      ours starts <em>here.</em>
+      ours starts <em>right here.</em>
     </h1>
 
     <div class="hero-meta reveal d3">
       <p class="hero-lede">
-        <b>Authentic and juiciest momos in Gurgaon.</b> Fourteen kinds, folded by hand every morning, served hot with chutney that's been roasted, not blended. Come hungry.
+        <b>The juiciest momos in Gurgaon</b> — handmade, hot, and served with a side of chutney and doodle vibes. Come for the food. Stay for the feedback wall.
       </p>
       <div class="hero-actions">
         <a href="#menu" class="btn btn-primary">
@@ -749,8 +760,8 @@
 <!-- ─── MARQUEE ─────────────────────────────── -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Steamed <em>·</em> Pan-fried <em>·</em> Tandoori <em>·</em> Schezwan <em>·</em> Cheese burst <em>·</em> Afghani <em>·</em> Chocolate <em>·</em></span>
-    <span>Steamed <em>·</em> Pan-fried <em>·</em> Tandoori <em>·</em> Schezwan <em>·</em> Cheese burst <em>·</em> Afghani <em>·</em> Chocolate <em>·</em></span>
+    <span>Steamed <em>·</em> Jhol <em>·</em> Tandoori <em>·</em> Butter <em>·</em> Schezwan <em>·</em> Burgers <em>·</em> Chowmein <em>·</em> Churros <em>·</em> Frappes <em>·</em></span>
+    <span>Steamed <em>·</em> Jhol <em>·</em> Tandoori <em>·</em> Butter <em>·</em> Schezwan <em>·</em> Burgers <em>·</em> Chowmein <em>·</em> Churros <em>·</em> Frappes <em>·</em></span>
   </div>
 </div>
 
@@ -758,19 +769,24 @@
 <section style="padding-top:0; padding-bottom: 0;">
   <div class="container mosaic">
     <div class="mosaic-tile big">
-      <img src="images/hero-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=1200&q=80'" alt="A basket of freshly steamed momos" loading="lazy" />
-      <div class="mosaic-caption">Fresh out the steamer.</div>
+      <img src="images/hero-1.jpg" alt="A platter of butter momos, chowmein, and frappe on a red gingham cloth" loading="lazy" />
+      <div class="mosaic-caption">The full spread.</div>
     </div>
     <div class="mosaic-tile tall">
-      <img src="images/hero-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1541696490-8744a5024b6c?auto=format&fit=crop&w=800&q=80'" alt="Hot chilli chutney" loading="lazy" />
+      <img src="images/hero-2.jpg" alt="Bowl of butter momos in creamy tomato gravy with sesame" loading="lazy" />
+      <div class="mosaic-caption">Butter momo bowl.</div>
     </div>
     <div class="mosaic-tile sq">
-      <img src="images/hero-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=800&q=80'" alt="A cup of hot masala chai" loading="lazy" />
-      <div class="mosaic-caption">Cutting chai.</div>
+      <img src="images/hero-3.jpg" alt="Cafe Momo & More storefront with illuminated yellow signage" loading="lazy" />
+      <div class="mosaic-caption">Order here ↗</div>
+    </div>
+    <div class="mosaic-tile sq2">
+      <img src="images/hero-5.jpg" alt="Cafe chalkboard menu with today's specials, cat sign and post-its" loading="lazy" />
+      <div class="mosaic-caption">Today's specials.</div>
     </div>
     <div class="mosaic-tile wide">
-      <img src="images/hero-4.jpg" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80'" alt="The cafe" loading="lazy" />
-      <div class="mosaic-caption">Our little corner.</div>
+      <img src="images/hero-4.jpg" alt="Yellow plate of momos with three chutneys at the feedback wall" loading="lazy" />
+      <div class="mosaic-caption">The corner table.</div>
     </div>
   </div>
 </section>
@@ -778,26 +794,30 @@
 <!-- ─── ABOUT ───────────────────────────────── -->
 <section id="about">
   <div class="container">
-    <div class="section-eyebrow reveal">Our little story</div>
+    <div class="section-eyebrow reveal">One year in · Just getting started</div>
     <h2 class="section-title reveal d1">
-      A small shop on <em>HUDA Market,</em><br>and a really <em>stubborn</em> dream.
+      A small shop on <em>HUDA Market</em><br>with a really <em>full</em> heart.
     </h2>
 
     <div class="grid">
       <div class="about-copy">
         <p>
-          Momo &amp; More began the way most good things do — a small kitchen in Sector 23, a bigger appetite, and a nagging feeling that Gurgaon deserved momos worth going out of your way for. So we opened a shop.
+          Cafe Momo &amp; More opened its doors in Sector 23 with one idea — serve the juiciest momos in Gurgaon, and make people feel at home while they're at it. A year later, the feedback wall is running out of space.
         </p>
         <p>
-          Every dumpling is folded by hand each morning. The chilli chutney is roasted, not blended. The chai is boiled, never steeped. And the playlist? Loud when it's a Friday and gentle when it's raining.
+          Every dumpling is folded by hand each morning. The chutney is roasted, not blended. Post-its come free with every table. And somewhere between the tandoori momos and the churros with molten chocolate, we became a favourite haunt.
         </p>
         <p>
-          We're not a fancy place. We're a full one.
+          Serving happiness with a side of chutney &amp; doodle vibes.
         </p>
 
         <div class="about-stats">
           <div>
-            <div class="stat-num">14</div>
+            <div class="stat-num">1<span style="font-size:22px;color:var(--rust);vertical-align:top">yr</span></div>
+            <div class="stat-lbl">Just crossed</div>
+          </div>
+          <div>
+            <div class="stat-num">14+</div>
             <div class="stat-lbl">Momo varieties</div>
           </div>
           <div>
@@ -805,12 +825,8 @@
             <div class="stat-lbl">Frozen. Ever.</div>
           </div>
           <div>
-            <div class="stat-num">1,200+</div>
-            <div class="stat-lbl">Folded daily</div>
-          </div>
-          <div>
-            <div class="stat-num">8am—11pm</div>
-            <div class="stat-lbl">Open every day</div>
+            <div class="stat-num">1,000+</div>
+            <div class="stat-lbl">Post-it memories</div>
           </div>
         </div>
       </div>
@@ -831,92 +847,99 @@
         <div class="section-eyebrow reveal">The good stuff</div>
         <h2 class="section-title reveal d1">The <em>menu.</em></h2>
       </div>
-      <p class="menu-note reveal d2">All momos come with our house-roasted red chilli chutney and a sweet-soy dip. Ask for extra — we won't judge.</p>
+      <p class="menu-note reveal d2">Every plate comes with our house-roasted red chutney &amp; sweet dip. Ask for extra — we won't judge. Prices are indicative — check the counter for the latest.</p>
     </div>
 
     <div class="menu-cats">
-      <!-- STEAMED & FRIED -->
+      <!-- SIGNATURE MOMOS -->
       <div class="menu-cat">
-        <h3>Signature Momos <small>8 pieces</small></h3>
+        <h3>The Momos <small>half / full</small></h3>
 
         <div class="menu-item">
-          <h4>Classic <em>Steamed</em></h4>
-          <span class="price">₹ 140<small>Veg / Chkn 160</small></span>
-          <p class="desc">The one that started it all. Cabbage &amp; carrot, or minced chicken with ginger and coriander.</p>
+          <h4>Steamed <em>Momo</em></h4>
+          <span class="price">₹ 50 / 90<small>Veg · Chkn 70 / 130</small></span>
+          <p class="desc">The one that started it all. Juicy filling, delicate wrapper, house red chilli chutney on the side.</p>
         </div>
 
         <div class="menu-item">
-          <h4>Pan-fried Kurkure <span class="tag">crunchy</span></h4>
-          <span class="price">₹ 170<small>Veg / Chkn 190</small></span>
+          <h4>Fried Momo</h4>
+          <span class="price">₹ 60 / 100<small>Veg · Chkn 80 / 140</small></span>
+          <p class="desc">Steamed first, then deep-fried till golden. Crackling shell, molten centre.</p>
+        </div>
+
+        <div class="menu-item">
+          <h4>Kurkure Pan-Fried <span class="tag">crispy base</span></h4>
+          <span class="price">₹ 70 / 130<small>Veg · Chkn 90 / 160</small></span>
           <p class="desc">Steamed, then seared bottom-up till the base is impossibly crisp.</p>
         </div>
 
         <div class="menu-item">
           <h4>Tandoori <em>Charcoal</em> <span class="tag hot">smoky</span></h4>
-          <span class="price">₹ 190<small>Veg / Chkn 220</small></span>
+          <span class="price">₹ 70 / 130<small>Veg · Chkn 90 / 160</small></span>
           <p class="desc">Marinated overnight in hung curd &amp; spices. Fired in the tandoor. Charred edges, tender inside.</p>
         </div>
 
         <div class="menu-item">
-          <h4>Afghani Malai</h4>
-          <span class="price">₹ 210<small>Veg / Chkn 230</small></span>
-          <p class="desc">Cashew-cream, cardamom, mild green chilli. Almost dessert. Almost.</p>
+          <h4>Wheat Momo <span class="tag">100% wheat</span></h4>
+          <span class="price">₹ 60 / 110<small>Veg · Chkn 80 / 140</small></span>
+          <p class="desc">Good health, good taste, zero waste. Whole-wheat wrapper, same juicy filling.</p>
         </div>
 
         <div class="menu-item">
-          <h4>Chocolate Momo <span class="tag">dessert</span></h4>
-          <span class="price">₹ 180<small>6 pieces</small></span>
-          <p class="desc">Molten dark chocolate wrapped in a soft steamed dumpling. Yes, really. Yes, you'll want another plate.</p>
+          <h4>Egg Momo <span class="tag">chalkboard special</span></h4>
+          <span class="price">₹ 80 / 140</span>
+          <p class="desc">Protein-packed &amp; flavourful. A cafe-special addition — ask if it's on today.</p>
         </div>
       </div>
 
-      <!-- SAUCY & CHEESY -->
+      <!-- IN THE GRAVY / SAUCY -->
       <div class="menu-cat">
-        <h3>Saucy &amp; Cheesy <small>10 pieces</small></h3>
+        <h3>In the Gravy <small>bowl · 8 pieces</small></h3>
 
         <div class="menu-item">
-          <h4>Schezwan <em>Chilli</em> Momo <span class="tag hot">very hot</span></h4>
-          <span class="price">₹ 210<small>Veg / Chkn 240</small></span>
-          <p class="desc">Tossed in our house schezwan — burnt garlic, red chilli, spring onion, a whisper of vinegar.</p>
-        </div>
-
-        <div class="menu-item">
-          <h4>Cheese Burst <span class="tag">gooey</span></h4>
-          <span class="price">₹ 220<small>Veg / Chkn 250</small></span>
-          <p class="desc">Mozzarella folded right into the filling. Bites back with a molten pull.</p>
+          <h4>Butter Momo <em>★</em> <span class="tag">house favourite</span></h4>
+          <span class="price">₹ 180<small>Veg · Chkn 210</small></span>
+          <p class="desc">Our signature. Steamed momos swimming in a rich, creamy tomato-butter gravy, showered with toasted sesame.</p>
         </div>
 
         <div class="menu-item">
           <h4>Jhol Momo</h4>
-          <span class="price">₹ 220<small>Veg / Chkn 240</small></span>
-          <p class="desc">Swimming in a warm, tangy Nepali sesame-tomato broth. Soul food, weather permitting (always).</p>
+          <span class="price">₹ 170<small>Veg · Chkn 200</small></span>
+          <p class="desc">The Nepali soul-food classic — warm sesame-tomato broth, roasted spices, coriander on top.</p>
         </div>
 
         <div class="menu-item">
-          <h4>The Big Platter <span class="tag">sharer</span></h4>
-          <span class="price">₹ 480<small>for two</small></span>
-          <p class="desc">Four kinds, sixteen pieces, three chutneys, one very happy table. Choose your fillings.</p>
+          <h4>Schezwan <em>Chilli</em> Momo <span class="tag hot">very hot</span></h4>
+          <span class="price">₹ 160<small>Veg · Chkn 190</small></span>
+          <p class="desc">Tossed in our house schezwan — burnt garlic, red chilli, spring onion, a whisper of vinegar.</p>
+        </div>
+
+        <div class="menu-item">
+          <h4>Chocolate Momo <span class="tag">dessert</span></h4>
+          <span class="price">₹ 140<small>6 pieces</small></span>
+          <p class="desc">Molten dark chocolate in a soft steamed dumpling. Yes, really. Yes, you'll want another plate.</p>
         </div>
       </div>
 
-      <!-- SIDES -->
+      <!-- BEYOND MOMOS -->
       <div class="menu-cat">
-        <h3>Sides &amp; Small Things</h3>
+        <h3>Beyond the Momo</h3>
 
-        <div class="menu-item"><h4>Chilli Garlic Noodles</h4><span class="price">₹ 180</span><p class="desc">Wok-tossed, generous garlic, unapologetic heat.</p></div>
-        <div class="menu-item"><h4>Thupka Bowl</h4><span class="price">₹ 190</span><p class="desc">A Himalayan noodle soup — clear broth, hand-pulled noodles, seasonal veg.</p></div>
-        <div class="menu-item"><h4>Crispy Corn</h4><span class="price">₹ 160</span><p class="desc">Fried till golden, tossed with curry leaves and rock salt.</p></div>
-        <div class="menu-item"><h4>Peri-Peri Fries</h4><span class="price">₹ 140</span><p class="desc">Skin-on, house peri-peri, a pot of garlic mayo.</p></div>
+        <div class="menu-item"><h4>Cafe Momo Burger</h4><span class="price">₹ 160<small>Veg · Chkn 190</small></span><p class="desc">Toasted brioche, house patty, cheese, our secret sauce, a stack of crisp fries alongside.</p></div>
+        <div class="menu-item"><h4>Chilli Garlic Chowmein</h4><span class="price">₹ 130<small>Veg · Chkn 160</small></span><p class="desc">Wok-tossed noodles, spring onion, chilli, garlic — the way HUDA Market wants them.</p></div>
+        <div class="menu-item"><h4>Chaap + Rumali Roti <span class="tag">special</span></h4><span class="price">₹ 180</span><p class="desc">Soya chaap in a rich cafe-special gravy, folded into warm rumali roti. Chalkboard staple.</p></div>
+        <div class="menu-item"><h4>Peri-Peri Fries</h4><span class="price">₹ 120</span><p class="desc">Skin-on, house peri-peri, a pot of garlic mayo.</p></div>
+        <div class="menu-item"><h4>Churros with <em>Chocolate</em> <span class="tag">dessert</span></h4><span class="price">₹ 149</span><p class="desc">Warm, sugar-dusted, with a bowl of molten dark chocolate for serious dipping.</p></div>
       </div>
 
       <!-- SIPS -->
       <div class="menu-cat">
         <h3>To Sip</h3>
 
-        <div class="menu-item"><h4>Kadak Masala Chai</h4><span class="price">₹ 60</span><p class="desc">Boiled long. Cardamom-forward. Served in a small glass, the way it should be.</p></div>
-        <div class="menu-item"><h4>Butter Coffee <em>iced</em></h4><span class="price">₹ 180</span><p class="desc">Cold-brew concentrate, brown butter, oat milk. A quiet obsession.</p></div>
-        <div class="menu-item"><h4>Rose Lemonade</h4><span class="price">₹ 140</span><p class="desc">Fresh lime, rose syrup, cardamom, a lot of ice.</p></div>
-        <div class="menu-item"><h4>Kahwa Green Tea</h4><span class="price">₹ 90</span><p class="desc">Kashmiri saffron, almonds, cardamom. Steep it slow.</p></div>
+        <div class="menu-item"><h4>Kadak Masala Chai</h4><span class="price">₹ 40</span><p class="desc">Boiled long. Cardamom-forward. Served in our yellow mug, the one from the feedback wall photos.</p></div>
+        <div class="menu-item"><h4>Cold Coffee <em>with vanilla ice cream</em> <span class="tag">bestseller</span></h4><span class="price">₹ 129</span><p class="desc">Cold-brewed, blended, topped with a scoop of vanilla. The one on our Instagram.</p></div>
+        <div class="menu-item"><h4>Caramel Frappe</h4><span class="price">₹ 149</span><p class="desc">Whipped, caramel drizzle, biscoff on top. Winter cup, all year round.</p></div>
+        <div class="menu-item"><h4>Rose Lemonade</h4><span class="price">₹ 90</span><p class="desc">Fresh lime, rose syrup, cardamom, a lot of ice.</p></div>
       </div>
 
     </div>
@@ -927,9 +950,9 @@
 <section class="quote">
   <div class="container">
     <blockquote>
-      &ldquo;Small cafe, big flavours. The tandoori momos are <span>criminally good</span> and the chai is worth the walk.&rdquo;
+      We count <span>memories,</span><br>not calories.
     </blockquote>
-    <cite>— A very happy regular</cite>
+    <cite>— Written on our feedback wall, meant every word</cite>
   </div>
 </section>
 
@@ -982,8 +1005,8 @@
   <div class="container">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand">Cafe Momo <em>&amp; More</em></div>
-        <p class="foot-tag">Authentic and juiciest momos in Gurgaon. Shop 130, HUDA Market, Sector 23. Second helpings encouraged.</p>
+        <div class="foot-brand">Cafe <span class="deva" style="color:var(--mustard);font-weight:700;font-style:normal;">मोमो</span> <em>&amp; More</em></div>
+        <p class="foot-tag">Juiciest momos in Gurgaon. Shop 130, HUDA Market, Sector 23. Second helpings encouraged. Post-its provided.</p>
       </div>
       <div class="foot-col">
         <h5>Wander</h5>
