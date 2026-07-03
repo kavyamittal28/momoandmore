@@ -131,7 +131,8 @@
     padding: 40px 0 32px;
   }
   .hero-eyebrow {
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 8px 12px;
+    flex-wrap: wrap;
     font-size: 12px; letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--rust-dk);
@@ -140,6 +141,13 @@
   }
   .hero-eyebrow::before {
     content: ""; width: 34px; height: 1px; background: var(--rust-dk);
+    flex-shrink: 0;
+  }
+  .he-loc, .he-mile { white-space: nowrap; }
+  .he-mile { color: var(--mustard); }
+  @media (max-width: 560px) {
+    .hero-eyebrow { font-size: 10.5px; letter-spacing: 0.14em; gap: 6px 10px; }
+    .hero-eyebrow::before { width: 22px; }
   }
   .hero-title {
     font-size: clamp(46px, 12vw, 148px);
@@ -223,7 +231,7 @@
   .marquee-track {
     display: flex; gap: 44px;
     white-space: nowrap;
-    animation: scroll 32s linear infinite;
+    animation: scroll 18s linear infinite;
     font-family: 'Fraunces', serif;
     font-weight: 600;
     font-size: clamp(28px, 5vw, 46px);
@@ -265,7 +273,7 @@
   .mosaic-tile.wide { grid-column: span 6; grid-row: span 2; }
   .mosaic-tile.sq   { grid-column: span 3; grid-row: span 2; }
   .mosaic-tile.sq2  { grid-column: span 3; grid-row: span 2; }
-  .mosaic-tile.tall { grid-column: span 3; grid-row: span 3; }
+  .mosaic-tile.tall { grid-column: span 3; grid-row: span 4; }
   @media (min-width: 780px) {
     .mosaic { grid-auto-rows: 120px; }
     .mosaic-tile.big  { grid-column: span 3; grid-row: span 3; }
@@ -719,7 +727,10 @@
 <!-- ─── HERO ─────────────────────────────────── -->
 <section class="hero">
   <div class="container">
-    <div class="hero-eyebrow reveal d1">HUDA Market · Sector 23 · Gurugram · <span style="color:var(--mustard)">1 year strong ✿</span></div>
+    <div class="hero-eyebrow reveal d1">
+      <span class="he-loc">HUDA Market · Sector 23 · Gurugram</span>
+      <span class="he-mile">1 year strong ✿</span>
+    </div>
 
     <h1 class="hero-title reveal d2">
       Every <em>bite</em><br>
